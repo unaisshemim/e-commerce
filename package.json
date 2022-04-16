@@ -2,7 +2,7 @@
   "name": "shoping",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://unaisshemim.github.io/e-commerce",
+  "homepage": "http://unaisshemim.github.io/e-commerce",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
