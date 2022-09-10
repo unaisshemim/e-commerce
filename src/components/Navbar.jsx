@@ -76,7 +76,7 @@ export const Navbar = () => {
                         <SearchIcon  style={{color:"grey",fontSize:17}}/>
                     </SearchContainer>
                 </Left>
-                <Center><Logo>super.</Logo></Center>
+                <Center><Logo>unais.</Logo></Center>
                 <Right>
                     <Menuitem>Register</Menuitem>
                     <Menuitem>Sign In</Menuitem>
