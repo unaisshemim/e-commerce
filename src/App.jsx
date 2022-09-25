@@ -9,13 +9,13 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link 
+
 } from "react-router-dom";
 
 
 
 function App() {
-  const user=false
+  const user=true 
   return (
     <div className="App">
    <BrowserRouter>
@@ -24,7 +24,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/register" element={user ?<Home/>:<Register />} />
       <Route path="/login" element={user ?<Home/>:<Login />} />
-      <Route path="/product/:id" element={<Product/>} />
+      <Route path="/productList/product/:id" element={<Product/>} />
       <Route path="/productList" element={<ProductList />} />
       <Route path="/payment" element={<Stripe />} />
     </Routes>

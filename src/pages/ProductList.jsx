@@ -37,7 +37,9 @@ const Option = styled.option`
 
 const ProductList = () => {
     const location = useLocation();
+    console.log(location)
     const cat =location.pathname.split('/')[2]
+    console.log(cat)
     const [filter,setFilter]=useState({})
     const [sort,setSort]=useState("featured")
 

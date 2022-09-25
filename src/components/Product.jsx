@@ -1,6 +1,7 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components"
 import {mobile} from './../responsive'
+import { Link } from "react-router-dom";
 const Info = styled.div`
     width: 100%;
     height:100%;
@@ -82,7 +83,9 @@ const Products = ( {item}) => {
         
             <Info>
                 <Icon><FavoriteBorderOutlined/></Icon>
+                <Link to={`product/${item._id}`}>
                 <Icon><SearchOutlined/></Icon>
+                </Link>
                 <Icon><ShoppingCartOutlined/></Icon>
             </Info>
         </Circle>

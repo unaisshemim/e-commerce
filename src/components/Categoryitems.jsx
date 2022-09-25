@@ -48,7 +48,7 @@ cursor: pointer;`
 const Categoryitems = ({item}) => {
     return (
         <Container>
-            <Link to={`productList/${item.cat}`}>
+            <Link to="/productList">
         <Image src={item.img}/>
         <Info>
             <Title>{item.title}</Title>
