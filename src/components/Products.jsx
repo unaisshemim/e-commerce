@@ -1,4 +1,4 @@
-import {popularProducts} from '../data'
+// import {popularProducts} from '../data'
 import styled from "styled-components";
 import Product from "./Product"
 import {useState,useEffect} from 'react'
@@ -11,7 +11,7 @@ justify-content:space-between;`
 
 const Products = ({sort,filter,cat}) => {
     const [products,setProducts]=useState([])
-    const [filteredProducts,setFilteredProducts]=useState([])
+    // const [filteredProducts,setFilteredProducts]=useState([])
     
     useEffect(()=>{
         const getProducts=async()=>{
@@ -26,12 +26,12 @@ const Products = ({sort,filter,cat}) => {
        
     },[])
 
-    useEffect(()=>{
+    // useEffect(()=>{
         
-    },[filter,products])
+    // },[filter,products])
     
  
-     console.log(filteredProducts)
+    //  console.log(filteredProducts)
     
     return (
         <Container>

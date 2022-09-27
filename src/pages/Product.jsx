@@ -4,12 +4,16 @@ import Navbar from "../components/Navbar"
 import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
 import { mobile } from "../responsive"
-import { Add, ContactSupportOutlined, Remove } from "@material-ui/icons"
+import { Add,  Remove } from "@material-ui/icons"
 import { useLocation } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
-
 import { publicRequest } from "../RequestMethod"
+import { addProduct } from "../Redux/CartRedux"
+import {useDispatch} from 'react-redux'
+
+
+
 const Container = styled.div``;
 const Wrapper = styled.div`
 display: flex;
@@ -93,7 +97,9 @@ const Button = styled.button`
 padding:10px;
 font-weight:500;
 color:white;
-background-color:teal`;
+background-color:teal;
+cursor:pointer;
+`;
 const Product = () => {
     const location=useLocation()
     const id =location.pathname.split("/")[3]
@@ -102,6 +108,12 @@ const Product = () => {
     const [color,setColor]=useState("")
     const [size,setSize]=useState("")
 
+
+
+    const dispatch=useDispatch()
+
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
        const getProduct=async()=>{
         try {
@@ -112,8 +124,10 @@ const Product = () => {
             console.log(error)
         }
        }
+       
        getProduct()
-    },[])
+        // eslint-disable-next-line
+    },[]) 
 
         const handleQuantity=(value)=>{
 
@@ -130,6 +144,10 @@ const Product = () => {
         }
         const handleSize=(value)=>{
           setSize(value)
+        }
+
+        const handleClick=()=>{
+            dispatch(addProduct({product,quantity,size,color}))
         }
     
     return (
@@ -174,7 +192,7 @@ const Product = () => {
                         <Amount>{quantity}</Amount>
                         <Add  onClick={()=>{handleQuantity("inc")}} onChange={(e)=>{e.preventDefault()}}/>
                         </AmountContainer>
-                        <Button>ADD TO CART</Button>
+                        <Button onClick={()=>{handleClick()}}>ADD TO CART</Button>
                         </AddContainer>
                         
 

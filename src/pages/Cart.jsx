@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { Add, Remove } from '@material-ui/icons';
 import { mobile } from '../responsive';
+import { useSelector } from 'react-redux';
 const Container = styled.div``;
 const Wrapper = styled.div`
 
@@ -87,16 +88,16 @@ border-radius: 50%;
 background-color:${props => props.color};
 `;
 const ProductSize = styled.div``;
-const PrizeDetails = styled.div`
-flex: 1;
-display:flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-${mobile({alignItems:"flex-end",
-marginRight:"70px",})}
+// const PrizeDetails = styled.div`
+// flex: 1;
+// display:flex;
+// flex-direction: column;
+// align-items: center;
+// justify-content: center;
+// ${mobile({alignItems:"flex-end",
+// marginRight:"70px",})}
 
-`;
+// `;
 
 const ProductAmountContainer = styled.div`
 display:flex;
@@ -150,8 +151,10 @@ cursor: pointer;
 
 
 
-
 const Cart = () => {
+    const cart=useSelector(state=>state.cart)
+    console.log(cart.products.product)
+    
     return (
         <Container>
             <Navbar />
@@ -168,49 +171,29 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                                <Details>
-                                    <ProductName><b>Product:</b>JESSIE THUNDER SHOES </ProductName>
-                                    <ProductId><b>7597359793759</b></ProductId>
-                                    <ProductColor color="black" />
-                                    <ProductSize><b>Size:</b>7 UK</ProductSize>
-                                </Details>
-
-
+                        {cart.products.map((product,key)=>{
+                            return(
+                                <Product key={key}>
+                              <ProductDetail>
+                              <Image src={product.img} />
+                              <Details>
+                                  <ProductName><b>Product:</b>{product.titlle}</ProductName>
+                                  <ProductId><b>{product._id}</b></ProductId>
+                                  <ProductColor color="black" />
+                                  <ProductSize><b>Size:</b>{product.size}</ProductSize>
+                              </Details>
                             </ProductDetail>
-                            <PrizeDetails>
-                                <ProductAmountContainer>
-                                    <Remove />
-                                    <ProductAmount>2</ProductAmount>
-                                    <Add />
-                                </ProductAmountContainer>
-                                <ProductPrize>500</ProductPrize>
-                            </PrizeDetails>
+                              <ProductAmountContainer>
+                                  <Remove />
+                                  <ProductAmount>{product.quantity}</ProductAmount>
+                                  <Add />
+                              </ProductAmountContainer>
+                              <ProductPrize>{product.price}</ProductPrize>
                         </Product>
+                            )
+                        })}
                         <Hr></Hr>
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
-                                <Details>
-                                    <ProductName><b>Product:</b>VANS T-SHIRT </ProductName>
-                                    <ProductId><b>1316541654</b></ProductId>
-                                    <ProductColor color="grey" />
-                                    <ProductSize><b>Size:</b>L</ProductSize>
-                                </Details>
-
-
-                            </ProductDetail>
-                            <PrizeDetails>
-                                <ProductAmountContainer>
-                                    <Remove />
-                                    <ProductAmount>1</ProductAmount>
-                                    <Add />
-                                </ProductAmountContainer>
-                                <ProductPrize>300</ProductPrize>
-                            </PrizeDetails>
-                        </Product>
+                        
                         <Hr></Hr>
                     </Info>
                     <Summary>
