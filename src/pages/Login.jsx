@@ -1,6 +1,10 @@
 
 import React from 'react'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
+import { login } from '../Redux/apiCalls';
+
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -63,14 +67,24 @@ font-weight: 350;
 `;
 
 const Login = () => {
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const dispatch=useDispatch()
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        login(dispatch,{email,password})
+    }
+    
+    
+ 
     return (
         <Container>
           <Wrapper>
               <Form >
                   <Title>Sign In </Title>
-                  <Input placeholder="email"/>
-                  <Input placeholder="password"/>
-                  <Button>Sign In</Button>
+                  <Input placeholder="email" onChange={(e)=>{setEmail(e.target.value)}}/>
+                  <Input placeholder="password" onChange={(e)=>{setPassword(e.target.value)}}/>
+                  <Button onClick={()=>{handleSubmit()}}>Sign In</Button>
                   <Link>Create new account</Link>
                   <Link>Forgot password</Link>
 

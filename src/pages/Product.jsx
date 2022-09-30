@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 import { publicRequest } from "../RequestMethod"
-import { addProduct } from "../Redux/CartRedux"
+import { addProduct } from "../Redux/cartRedux"
 import {useDispatch} from 'react-redux'
 
 
@@ -111,7 +111,7 @@ const Product = () => {
 
 
     const dispatch=useDispatch()
-
+    
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
@@ -147,7 +147,7 @@ const Product = () => {
         }
 
         const handleClick=()=>{
-            dispatch(addProduct({product,quantity,size,color}))
+            dispatch(addProduct({...product,quantity,size,color}))
         }
     
     return (

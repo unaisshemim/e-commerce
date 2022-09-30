@@ -153,7 +153,7 @@ cursor: pointer;
 
 const Cart = () => {
     const cart=useSelector(state=>state.cart)
-    console.log(cart.products.product)
+    
     
     return (
         <Container>
@@ -177,9 +177,9 @@ const Cart = () => {
                               <ProductDetail>
                               <Image src={product.img} />
                               <Details>
-                                  <ProductName><b>Product:</b>{product.titlle}</ProductName>
+                                  <ProductName><b>Product:</b>{product.title}</ProductName>
                                   <ProductId><b>{product._id}</b></ProductId>
-                                  <ProductColor color="black" />
+                                  <ProductColor color={product.color} />
                                   <ProductSize><b>Size:</b>{product.size}</ProductSize>
                               </Details>
                             </ProductDetail>
@@ -200,7 +200,7 @@ const Cart = () => {
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Estimate Prize</SummaryItemText>
-                            <SummaryItemPrize>800</SummaryItemPrize>
+                            <SummaryItemPrize>{cart.total}</SummaryItemPrize>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Shipping cost </SummaryItemText>
@@ -212,7 +212,7 @@ const Cart = () => {
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrize>800</SummaryItemPrize>
+                            <SummaryItemPrize>{cart.total}</SummaryItemPrize>
                         </SummaryItem>
                             <Button>CHECKOUT</Button>
                     </Summary>
