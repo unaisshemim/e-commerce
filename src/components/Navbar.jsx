@@ -61,12 +61,17 @@ export const Navbar = () => {
     `;
     const Menuitem =styled.div`
     font-size:14px;
+    text-decoration:none;
+    cursor:pointer;
     ${mobile({fontSize:"12px"})};
     cursor:poiter;
     margin-right:25px
     `
     
     const quantity=useSelector(state=>state.cart.quantity)
+    
+    const name=useSelector(state=>state.user.currentUser.username)
+    
     
     
 
@@ -82,12 +87,14 @@ export const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Link to='/'>
-                    <Logo>unais.</Logo>
+                    <Link to='/' style={{textDecoration:"none"}}>
+                    <Logo>{name}</Logo>
                     </Link>
                     </Center>
                 <Right>
-                    <Menuitem>Register</Menuitem>
+                    <Link to='/login' style={{textDecoration:"none"}}>
+                    <Menuitem >Register</Menuitem>
+                    </Link>
                     <Menuitem>Sign In</Menuitem>
 
                     <Link to ="/cart">

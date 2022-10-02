@@ -6,7 +6,8 @@ import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 import {mobile} from "./../responsive"
 import {useLocation} from 'react-router-dom'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+
 
 const Container = styled.div``;
 const Filter = styled.div``;
@@ -51,7 +52,11 @@ const ProductList = () => {
         })
         
     };
-    console.log(filter)
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+  
     return (
         <Container>
             <Navbar />
