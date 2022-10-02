@@ -70,7 +70,7 @@ export const Navbar = () => {
     
     const quantity=useSelector(state=>state.cart.quantity)
     
-    const name=useSelector(state=>state.user.currentUser.username)
+    const name="unais"
     
     
     
